@@ -1,6 +1,6 @@
 import random
 
-def generate_list(list_size):
+def generate(list_size):
     a_list = []
     for i in range(list_size):
         a_list.append(random.randint(0, 99))
