@@ -1,5 +1,7 @@
 import random
 import math
+import unittest
+
 
 def genAttributes(numClients):
     clients = []
@@ -21,17 +23,46 @@ def checkParallel(cylinder1, cylinder2):
     h1 = cylinder1["height"]
     h2 = cylinder2["height"]
 
-    theta1 = math.asin(math.sqrt(pow((l1 + l2), 2) - pow((h1 - h2), 2)) / (l1 + l2))
-    theta2 = math.asin(math.sqrt(pow((l2 + l1), 2) - pow((h2 - h1), 2)) / (l2 + l1))
+    if h1 == h2:
+        return True
 
-    deltaTheta = math.fabs(theta1 - theta2)
+    try:
+        # These only work if the combination of cylinders will form a right triangle.
+        theta1 = math.asin(math.sqrt(pow((l1 + l2), 2) - pow((h1 - h2), 2)) / (l1 + l2))
+        theta2 = abs(math.asin((h2 - h1) / (l1 + l2)))
 
-    if deltaTheta == 0: return True
-    return deltaTheta
+        # Accuracy to the second decimal in degrees.
+        deltaTheta = round(math.degrees(math.fabs(theta1 - theta2)), 2)
+
+        return deltaTheta == 0
+    except:
+        # Return false if domain error (no right triangle formed)
+        return False
 
 
 def circInRange(cylinder1, cylinder2):
-    return math.fabs(cylinder1["circumference"] - cylinder2["circumference"]) <= .5
+    return math.fabs(cylinder1["circumference"] - cylinder2["circumference"]) <= .25
 
 
-print(genAttributes(10))
+clients = genAttributes(10)
+
+for d in clients:
+    print(d)
+
+print("\n----------------------Tests------------------------")
+
+print("Client #1 - Length: %.2f, Girth: %.2f, D2F: %.2f" % (clients[0]["length"], clients[0]["circumference"], clients[0]["height"]))
+print("Client #2 - Length: %.2f, Girth: %.2f, D2F: %.2f" % (clients[1]["length"], clients[1]["circumference"], clients[1]["height"]))
+
+print("Girth in range?: ", circInRange(clients[0], clients[1]))
+print("Parallel?: ", checkParallel(clients[1], clients[0]))
+
+print("---------------Force equal girths.-----------------")
+# Force two clients to have the same circumference
+clients[1]["circumference"] = clients[0]["circumference"]
+print("Girth in range?: ", circInRange(clients[0], clients[1]))
+
+print("-------------Force 45 degree angles.---------------")
+# Force two clients to be parallel
+clients[1]["height"] = ((clients[1]["length"] + clients[0]["length"]) / math.sqrt(2)) + clients[0]["height"]
+print("Parallel?: ", checkParallel(clients[0], clients[1]))
