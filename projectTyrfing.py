@@ -2,6 +2,27 @@ import random
 import math
 import unittest
 
+# Basic quicksort implementation with test list
+def quickSort(aList = [96, 32, 45, 12, 3]):
+    less = []
+    equal = []
+    greater = []
+
+    if len(aList) > 1:
+        pivot = aList[0]
+        for i in aList:
+            if i < pivot:
+                less.append(i)
+            if i == pivot:
+                equal.append(i)
+            if i > pivot:
+                greater.append(i)
+        return quickSort(less) + equal + quickSort(greater)
+    else:
+        return aList
+
+print(quickSort())
+
 
 def genAttributes(numClients):
     clients = []
