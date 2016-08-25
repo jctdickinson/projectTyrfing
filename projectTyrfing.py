@@ -2,6 +2,27 @@ import random
 import math
 import unittest
 
+# Basic quicksort implementation with test list
+def quickSort(aList = [342, 3, 343, 324.5, 23, 14, 1241, 98]):
+    less = []
+    equal = []
+    greater = []
+
+    if len(aList) > 1:
+        pivot = aList[0]
+        for i in aList:
+            if i < pivot:
+                less.append(i)
+            elif i == pivot:
+                equal.append(i)
+            else:
+                greater.append(i)
+        return quickSort(less) + equal + quickSort(greater)
+    else:
+        return aList
+
+print(quickSort())
+
 
 def genAttributes(numClients):
     clients = []
@@ -66,3 +87,4 @@ print("-------------Force 45 degree angles.---------------")
 # Force two clients to be parallel
 clients[1]["height"] = ((clients[1]["length"] + clients[0]["length"]) / math.sqrt(2)) + clients[0]["height"]
 print("Parallel?: ", checkParallel(clients[0], clients[1]))
+
