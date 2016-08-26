@@ -17,7 +17,8 @@ def quickSort(aList, attribute):
                 equal.append(i)
             else:
                 greater.append(i)
-        return quickSort(less, attribute) + equal + quickSort(greater, attribute)
+        # return quickSort(less, attribute) + equal + quickSort(greater, attribute)
+        return [[equal], [quickSort(less, attribute) + quickSort(greater, attribute)]]
     else:
         return aList
 
@@ -32,7 +33,12 @@ myList = [{'height': 90.89017950896947, 'circumference': 11.450288600772284, 'le
 {'height': 94.29503893358596, 'circumference': 11.970871730028083, 'length': 11.51608535808161},
 {'height': 78.90911522241386, 'circumference': 11.128813287271793, 'length': 12.53602763033395}]
 
-print(quickSort(myList, "height"))
+myList1 = [{'height': 90, 'circumference': 11.450288600772284, 'length': 12.460586622790455},
+{'height': 90, 'circumference': 11.864233321895822, 'length': 13.60719306190892},
+{'height': 90, 'circumference': 11.66752328620569, 'length': 14.47864981627746},
+{'height': 100.55884672058033, 'circumference': 11.087934634381416, 'length': 12.327788306011884}]
+
+print(quickSort(myList1, "height"))
 print()
 
 def genAttributes(numClients):
@@ -78,8 +84,8 @@ def circInRange(cylinder1, cylinder2):
 
 clients = genAttributes(10)
 
-for d in clients:
-    print(d)
+# for d in clients:
+#     print(d)
 
 print("\n----------------------Tests------------------------")
 
