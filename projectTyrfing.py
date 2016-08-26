@@ -3,7 +3,7 @@ import math
 import unittest
 
 # Basic quicksort implementation with test list
-def quickSort(aList = [342, 3, 343, 324.5, 23, 14, 1241, 98]):
+def quickSort(aList, attribute):
     less = []
     equal = []
     greater = []
@@ -11,13 +11,13 @@ def quickSort(aList = [342, 3, 343, 324.5, 23, 14, 1241, 98]):
     if len(aList) > 1:
         pivot = aList[0]
         for i in aList:
-            if i < pivot:
+            if i[attribute] < pivot:
                 less.append(i)
-            elif i == pivot:
+            elif i[attribute] == pivot:
                 equal.append(i)
             else:
                 greater.append(i)
-        return quickSort(less) + equal + quickSort(greater)
+        return quickSort(less, attribute) + equal + quickSort(greater, attribute)
     else:
         return aList
 
