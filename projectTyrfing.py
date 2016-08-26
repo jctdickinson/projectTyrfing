@@ -87,3 +87,4 @@ print("-------------Force 45 degree angles.---------------")
 # Force two clients to be parallel
 clients[1]["height"] = ((clients[1]["length"] + clients[0]["length"]) / math.sqrt(2)) + clients[0]["height"]
 print("Parallel?: ", checkParallel(clients[0], clients[1]))
+
