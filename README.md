@@ -6,6 +6,7 @@ Project Tyrfing is an application that exhibits optimal sorting of complex group
 Currently, the program will display the time it takes to join rods of similar length and circumference. In our simulation, up to four rods can be processed at once when in ideal circumstances. When rods cannot be paired, they are processed one at a time.
 
 For comparison, the program will display the time it takes to process a set of rods by with optimal sorting based on the following priority:
+
 1.  Groups of four (two pairs)
 2.  Single pairs
 3.  Lone rods
