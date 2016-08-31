@@ -2,20 +2,19 @@ import random
 import math
 
 
-
-
-
 def genCylinder():
     length = round(random.uniform(11.46, 14.78), 2)
     circumference = round(random.uniform(11.02, 12.3), 2)
     d2f = round(random.uniform(141.60, 212.40) / 2, 2)
     return {"length": length, "circumference": circumference, "height": d2f}
 
+
 def genAttributes(numClients=100):
     clients = []
     for i in range(numClients):
         clients.append(genCylinder())
     return clients
+
 
 def checkParallel(cylinder1, cylinder2):
     l1 = cylinder1["length"]
@@ -43,8 +42,9 @@ def checkParallel(cylinder1, cylinder2):
 def circumferenceInRange(cylinder1, cylinder2):
     return math.fabs(cylinder1["circumference"] - cylinder2["circumference"]) <= .5
 
+
 # Basic quickSort implementation with test list
-def genMatches(aList = genAttributes()):
+def genMatches(aList=genAttributes()):
     equal = []
     notEqual = []
 
@@ -74,8 +74,9 @@ def genMatches(aList = genAttributes()):
     else:
         return [aList]
 
+
 # Reorder a list of matches.
-def genOrder(aList = genMatches()):
+def genOrder(aList=genMatches()):
     artificialPairs = []
     artificialQuads = []
     newList = []
@@ -102,7 +103,7 @@ def genOrder(aList = genMatches()):
     return newList
 
 
-def calculateTime(aList = genOrder(), MJT=120):
+def calculateTime(aList=genOrder(), MJT=120):
     time = len(aList) * MJT
 
     m, s = divmod(time, 60)
