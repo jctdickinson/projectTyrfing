@@ -1,5 +1,6 @@
 import random
 import math
+import sys
 
 
 def genCylinder():
@@ -103,7 +104,7 @@ def genOrder(aList=genMatches()):
     return newList
 
 
-def calculateTime(aList=genOrder(), MJT=120):
+def calculateTime(aList=genAttributes(), MJT=120):
     time = len(aList) * MJT
 
     m, s = divmod(time, 60)
@@ -112,7 +113,9 @@ def calculateTime(aList=genOrder(), MJT=120):
     return "%02d:%02d:%02d" % (h, m, s)
 
 
-print(calculateTime())
+if __name__ == "__main__":
+    print(calculateTime())
+    print(sys.version)
 
 
 
