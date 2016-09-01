@@ -7,7 +7,7 @@ rods based on length and circumference, although these two attributes
 can easily be abstracted to almost any set of objects.
 
 In our simulation, there is assumed to be two processing units,
-each which can handle two rods at once. Thus, ideally up to four rods
+each which can handle two rods at any given time. Thus, ideally up to four rods
 can be processed at once. In some cases, three rods will be processed
 at once, such as when a matching pair and a lone rod are the only items
 remaining. If no matches are left, rods can be sorted as single items,
