@@ -11,11 +11,11 @@ def genCylinder():
     d2f = round(random.uniform(141.60, 212.40) / 2, 2)
     return {"length": length, "circumference": circumference, "height": d2f}
 
-def genAttributes(numClients=100):
-    clients = []
-    for i in range(numClients):
-        clients.append(genCylinder())
-    return clients
+def genAttributes(numItems=100):
+    items = []
+    for i in range(numItems):
+        items.append(genCylinder())
+    return items
 
 def checkParallel(cylinder1, cylinder2):
     l1 = cylinder1["length"]
@@ -104,7 +104,6 @@ def genOrder(aList = genMatches()):
 
 def calculateTime(aList = genOrder(), MJT=120):
     time = len(aList) * MJT
-
     m, s = divmod(time, 60)
     h, m = divmod(m, 60)
 
