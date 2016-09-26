@@ -27,4 +27,6 @@ defined as 'height', 'circumference', and 'length'. The algorithm runs at
 an average efficiency of O(n logn) time.
 
 At this point in time planned updates to Project Tyrfing include:
+* Option for user input of data
+* Option for user import of data with `json`
 * Implementation of GUI via Kivy
