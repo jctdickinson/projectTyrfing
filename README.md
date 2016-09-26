@@ -14,8 +14,12 @@ remaining. If no matches are left, rods can be sorted as single items,
 which allows for the processing of one per processing unit, or two at
 a time.
 
-The program displays the time for all items to be sorted based on this
-priority, stated formally as follows:
+The program assumes two processing units, each of which is capable of handling
+one pair of two like items at a time. Optimal sorting would therefore take
+place in the event where the total number of matches is divisible by two
+and the total number of items is divisible by four, or if the total number
+of items is less than four. The priority by which items are sorted
+is stated formally as follows:
 
 1.  Groups of four (two pairs)
 2.  Single pairs (in addition to a lone rod if available)
@@ -30,3 +34,4 @@ At this point in time planned updates to Project Tyrfing include:
 * Option for user input of data
 * Option for user import of data with `json`
 * Implementation of GUI via Kivy
+* Improved description of base algorithms in documentation
